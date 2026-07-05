@@ -1,0 +1,40 @@
+//Verilog HDL for "EEC216_Parts", "dp1MMtut_stim" "functional"
+
+
+module dp1MMtut_stim ( A0stim, B0stim, Y0out, Y1out );
+
+output A0stim, B0stim;
+input Y0out, Y1out;
+
+reg  A0stim, B0stim;
+
+// Default stimulus. 
+
+initial
+begin 
+
+   A0stim = 1'b0;
+   B0stim = 1'b0;   
+
+   #5 $display("A0in = %b, B0in = %b, Y0out = %b",A0stim,B0stim,Y0out);     
+      $display("A1in = %b, B1in = %b, Y1out = %b",A0stim,B0stim,Y1out);
+
+   #5 B0stim = 1'b1;
+      
+   #5 $display("A0in = %b, B0in = %b, Y0out = %b",A0stim,B0stim,Y0out);     
+      $display("A1in = %b, B1in = %b, Y1out = %b",A0stim,B0stim,Y1out);
+
+   #5 B0stim = 1'b0;
+      A0stim = 1'b1;	
+        
+   #5 $display("A0in = %b, B0in = %b, Y0out = %b",A0stim,B0stim,Y0out);     
+      $display("A1in = %b, B1in = %b, Y1out = %b",A0stim,B0stim,Y1out);
+
+   #5 B0stim = 1'b1;
+      
+   #5 $display("A0in = %b, B0in = %b, Y0out = %b",A0stim,B0stim,Y0out);     
+      $display("A1in = %b, B1in = %b, Y1out = %b",A0stim,B0stim,Y1out);
+
+end
+
+endmodule

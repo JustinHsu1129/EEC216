@@ -1,0 +1,6 @@
+//Verilog HDL for "EEC216_jhsu2022", "adderCSA3b_stim" "functional"
+
+
+module adderCSA3b_stim ( );
+
+endmodule

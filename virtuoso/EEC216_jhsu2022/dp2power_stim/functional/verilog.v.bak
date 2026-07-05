@@ -1,0 +1,38 @@
+module dp2power_stim (
+    output reg [31:0] A0in, 
+    output reg [31:0] A1in, 
+    output reg CINin
+);
+    initial begin
+        // --- THE FIX ---
+        // Wait 1ns before assigning anything to let the 
+        // AMS Connect Modules settle their DC operating points!
+        #1; 
+
+        // State 1: All Zeros (Minimum Leakage Candidate 1)
+        A0in = 32'h00000000;
+        A1in = 32'h00000000;
+        CINin = 1'b0;
+        #100;
+
+        // State 2: All Ones (Minimum Leakage Candidate 2)
+        A0in = 32'hFFFFFFFF;
+        A1in = 32'hFFFFFFFF;
+        CINin = 1'b1;
+        #100;
+
+        // State 3: Propagate 0 (Maximum Leakage Candidate 1)
+        A0in = 32'hFFFFFFFF;
+        A1in = 32'h00000000;
+        CINin = 1'b0;
+        #100;
+
+        // State 4: Propagate 1 (Maximum Leakage Candidate 2)
+        A0in = 32'hFFFFFFFF;
+        A1in = 32'h00000000;
+        CINin = 1'b1;
+        #100;
+
+        $finish;
+    end
+endmodule
